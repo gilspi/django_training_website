@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from .models import Order
 from .forms import OrderForm
-# from cms.models import CmsSlider
-# from price.models import PriceCard, PriceTable
-# from telebot.sendmessage import sendTelegram
+from cms.models import CmsSlider
+from price.models import PriceCard, PriceTable
+# import telebot
 
-'''def first_page(request):
+def first_page(request):
     slider_list = CmsSlider.objects.all()
     pc_1 = PriceCard.objects.get(pk=1)
     pc_2 = PriceCard.objects.get(pk=2)
@@ -19,7 +19,7 @@ from .forms import OrderForm
                  'price_table': price_table,
                  'form': form,
                  }
-    return render(request, './index.html', dict_obj)'''
+    return render(request, './index.html', dict_obj)
 
 
 def thanks_page(request):
@@ -28,7 +28,7 @@ def thanks_page(request):
         phone = request.POST['phone']
         element = Order(order_name = name, order_phone = phone)
         element.save()
-        # sendTelegram(tg_name = name, tg_phone = phone)
+        # telebot.sendTelegram(tg_name=name, tg_phone=phone)
         return render(request, './thanks.html', { 'name': name,})
     else:
         return render(request, './thanks.html')
